@@ -1,0 +1,43 @@
+{
+  "name" : "glue-load-us-east-1-non-prod",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::155175936776:role/glue_role-us-east-1-non-prod",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 100
+  },
+  "command" : {
+    "name" : "pythonshell",
+    "scriptLocation" : "s3://glueconfig-us-east-1-non-prod/scripts/glue_load.py",
+    "pythonVersion" : "3.9"
+  },
+  "defaultArguments" : {
+    "--extra-py-files" : "s3://glueconfig-us-east-1-non-prod/whl/snowflake_connector_python-2.8.0-py3-none-any.whl",
+    "--STEP_FUNC_ID" : "NOTSET",
+    "--enable-job-insights" : "false",
+    "--additional-python-modules" : "cryptography==42.0.8",
+    "--enable-observability-metrics" : "false",
+    "--SNOWFLAKE_CONNECTION_SECRET_ARN" : "arn:aws:secretsmanager:us-east-1:155175936776:secret:glue-sf-us-east-1-data-non-prod-srXpS5",
+    "--SNOWFLAKE_STAGE" : "public.STAGE_AWS_DP_S3_LANDING_NON_PROD",
+    "--S3_CONFIG_KEY" : "NOTSET",
+    "--SOURCE_SERVER_LABEL" : "NOTSET",
+    "--job-language" : "python",
+    "--S3_CONFIG_BUCKET" : "glueconfig-us-east-1-non-prod",
+    "--SNOWFLAKE_ANALYTICS_DATABASE_NAME" : "ANALYTICS_SANDBOX"
+  },
+  "connections" : {
+    "connections" : [ "glueconnector-us-east-1-non-prod", "glueconnector-cloud-us-east-1-non-prod" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 0,
+  "timeout" : 600,
+  "maxCapacity" : 0.0625,
+  "glueVersion" : "3.0",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "AWS-Architecture",
+    "branch" : "main",
+    "folder" : "Glue/Load"
+  }
+}
