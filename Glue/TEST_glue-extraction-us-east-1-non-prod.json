@@ -1,0 +1,55 @@
+{
+  "name" : "TEST_glue-extraction-us-east-1-non-prod",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::155175936776:role/glue_role-us-east-1-non-prod",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 100
+  },
+  "command" : {
+    "name" : "pythonshell",
+    "scriptLocation" : "s3://glueconfig-us-east-1-non-prod/scripts/TEST_glue-extraction-us-east-1-non-prod.py",
+    "pythonVersion" : "3.9"
+  },
+  "defaultArguments" : {
+    "--CONFIG_PARAMETER_05" : "NOTSET",
+    "--OVERRIDE_WATERMARK_START_VALUE" : "NOTSET",
+    "--SNOWFLAKE_CONNECTION_SECRET_ARN" : "arn:aws:secretsmanager:us-east-1:155175936776:secret:glue-sf-us-east-1-data-non-prod-srXpS5",
+    "--enable-glue-datacatalog" : "true",
+    "--OVERRIDE_WATERMARK_TYPE" : "NOTSET",
+    "library-set" : "analytics",
+    "--OVERRIDE_MAX_SOURCE_WATERMARK_OFFSET" : "NOTSET",
+    "--MSSQL_CONNECTION_SECRET_ARN" : "NOTSET",
+    "--CONFIG_PARAMETER_01" : "NOTSET",
+    "--S3_CONFIG_BUCKET" : "glueconfig-us-east-1-non-prod",
+    "--TempDir" : "s3://aws-glue-assets-155175936776-us-east-1/temporary/",
+    "--CONFIG_PARAMETER_02" : "NOTSET",
+    "--CONFIG_PARAMETER_03" : "NOTSET",
+    "--SNOWFLAKE_ANALYTICS_DATABASE_NAME" : "ANALYTICS_SANDBOX",
+    "--CONFIG_PARAMETER_04" : "NOTSET",
+    "--S3_LANDING_BUCKET" : "landing-us-east-1-non-prod",
+    "--STEP_FUNC_ID" : "NOTSET",
+    "--enable-job-insights" : "false",
+    "--additional-python-modules" : "pymssql==2.2.4,cryptography==42.0.8,snowflake-connector-python==3.13.2",
+    "--enable-observability-metrics" : "false",
+    "--OVERRIDE_WATERMARK_STRPTIME_FORMAT" : "NOTSET",
+    "--S3_CONFIG_KEY" : "NOTSET",
+    "--SOURCE_SERVER_LABEL" : "NOTSET",
+    "--job-language" : "python"
+  },
+  "connections" : {
+    "connections" : [ "glueconnector-us-east-1-non-prod", "glueconnector-cloud-us-east-1-non-prod" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 0,
+  "timeout" : 600,
+  "maxCapacity" : 1.0,
+  "glueVersion" : "3.0",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "AWS-Architecture",
+    "branch" : "main",
+    "folder" : "Glue"
+  }
+}
